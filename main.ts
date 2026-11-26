@@ -207,12 +207,14 @@ function burst(cx: number, cy: number, r: number): void {
   circle(cx, cy, Math.floor(r * 0.24), WHITE);
 }
 
-// Jet silhouette pointing right, nose at (x, y).
+// Jet silhouette pointing right, nose at (x, y): slim fuselage, nose cone,
+// swept wings and a tail fin, so it reads as a jet rather than an arrow.
 function jet(x: number, y: number, s: number, c: C): void {
-  tri(x, y, x - 34 * s, y - 9 * s, x - 30 * s, y + 3 * s, c);
-  tri(x, y, x - 30 * s, y + 3 * s, x - 34 * s, y + 12 * s, c);
-  tri(x - 18 * s, y - 2 * s, x - 26 * s, y - 16 * s, x - 10 * s, y - 2 * s, c);
-  tri(x - 18 * s, y + 2 * s, x - 26 * s, y + 16 * s, x - 10 * s, y + 2 * s, c);
+  rect(x - 34 * s, y - 2 * s, 34 * s, 4 * s, c);
+  tri(x, y, x - 8 * s, y - 4 * s, x - 8 * s, y + 4 * s, c);
+  tri(x - 14 * s, y - 2 * s, x - 24 * s, y - 16 * s, x - 8 * s, y - 2 * s, c);
+  tri(x - 14 * s, y + 2 * s, x - 24 * s, y + 16 * s, x - 8 * s, y + 2 * s, c);
+  tri(x - 30 * s, y - 2 * s, x - 34 * s, y - 12 * s, x - 26 * s, y - 2 * s, c);
 }
 
 // Flame: stacked triangles.
@@ -285,7 +287,8 @@ rect(IX, IY + 196, IW, 10, LGRAY); // runway
 rect(IX, IY + 214, IW, 4, WHITE);
 jet(IX + 150, IY + 84, 1, INK);
 jet(IX + 300, IY + 52, 1, NAVY);
-burst(IX + 268, IY + 150, 46);
+burst(IX + 268, IY + 138, 46);
+burst(IX + 190, IY + 158, 24);
 circle(IX + 210, IY + 96, 16, GRAY);
 circle(IX + 238, IY + 82, 12, GRAY);
 rect(IX, IY + IH - 22, IW, 22, INK);
